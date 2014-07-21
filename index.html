@@ -1,0 +1,311 @@
+<HTML>
+<HEAD>
+<script src="jquery-1.11.1.min.js"></script>
+<script>
+console.log("yay");
+$(document).ready(function() {
+
+	console.log("yay");
+
+	$("#gignav").hover(function(){
+		$("#gignav").css("font-style", "italic");
+	},
+	function(){
+		$("#gignav").css("font-style", "normal");
+	});
+	$("#clipnav").hover(function(){
+		$("#clipnav").css("font-style", "italic");
+	},
+	function(){
+		$("#clipnav").css("font-style", "normal");
+	});
+
+	$("#aboutnav").hover(function(){
+		$("#aboutnav").css("font-style", "italic");
+	},
+	function(){
+		$("#aboutnav").css("font-style", "normal");
+	});
+
+	$("#clipnav").click(function(){
+			$("#clippanel").toggle();
+	});
+	$("#aboutnav").click(function(){
+			$("#aboutpanel").toggle();
+	});
+
+	$("#contactnav").click(function(){
+			$("#contactpanel").toggle();
+	});
+
+	$("#follownav").click(function(){
+			$("#followpanel").toggle();
+	});
+	$("#contactnav").hover(function(){
+		$("#contactnav").css("font-style", "italic");
+	},
+	function(){
+		$("#contactnav").css("font-style", "normal");
+	});
+	$("#follownav").hover(function(){
+		$("#follownav").css("font-style", "italic");
+	},
+	function(){
+		$("#follownav").css("font-style", "normal");
+	});
+
+	$("#gignav").click(function(){
+		$.ajax({url:"gigs.json",success:function(gigs){
+			var i;
+			var mylist = "";
+			for (i in gigs.records ) {
+				mylist += gigs.records[i].u_name + "<br>----------------<br>";
+			}
+			$("#gigpanel").toggle();
+			$("#gigpanel").html(mylist);
+
+			console.log(mylist);
+		}});
+	});
+});
+</script>
+
+<link href='http://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+
+<style>
+.center {
+    margin: auto;
+    background-color: #b0e0e6;
+}
+
+.imgdiv {
+	
+}
+.nav1 {
+	position: absolute;
+	left: 42px;
+	top: 190px;
+	z-index: 1;
+	width: 300px;
+	background-color:#000000;
+	height: 230px;
+	
+}
+.nav1font {
+	color:#cccc33;
+	font-size:130px;	
+	position: relative;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	font-family:'Pompiere',cursive;
+	letter-spacing: -10px;
+}
+.nav2font {
+	font-family:'Pompiere',cursive;
+	color:#cc3333;
+	font-size:40px;	
+	position: relative;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+.clipnav {
+	font-family:'Pompiere',cursive;
+	color:#cc3333;
+	font-size:40px;	
+	position: relative;
+	top: -50px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+.nav2 {
+	position: absolute;
+	left: 42px;
+	top: 450px;
+	width: 300px;
+	z-index: 1;
+	font-family:'Pompiere',cursive;
+	background-color: #000000;
+}
+.nav3 {
+	position: absolute;
+	text-align: center;
+	left: 42px;
+	top: 575px;
+	width: 300px;
+	z-index: 1;
+	font-family:'Pompiere',cursive;
+	background-color: #000000;
+}
+
+.gigpanel {
+	display: none;
+	font-family:'Pompiere',cursive;
+	font-size:36px;
+	color:#cc3333;
+	text-align: center;
+	position: absolute;
+	left: 362px;
+	top: 150px;
+	width: 400px;
+	z-index: 1;
+	background-color: #000000;
+	opacity: 0.8;
+}
+.clippanel {
+	display: none;
+	font-family:'Pompiere',cursive;
+	font-size:36px;
+	color:#cc3333;
+	text-align: center;
+	position: absolute;
+	left: 262px;
+	top: 350px;
+	width: 400px;
+	z-index: 1;
+	background-color: #000000;
+	opacity: 0.9;
+}
+
+.aboutnav {
+	font-family:'Pompiere',cursive;
+	font-size:25px;
+	text-align: center;
+	color:#cc6666;
+	z-index: 1;
+	background-color: #000000;
+}
+
+.aboutpanel {
+	display: none;
+	font-family:'Pompiere',cursive;
+	font-size:18px;
+	color:#cc3333;
+	text-align: left;
+	position: absolute;
+	left: 362px;
+	top: 150px;
+	width: 400px;
+	z-index: 1;
+	background-color: #000000;
+	opacity: 0.6;
+}
+
+.contactnav {
+	font-family:'Pompiere',cursive;
+	font-size:25px;
+	text-align: center;
+	color:#cc6666;
+	z-index: 1;
+	background-color: #000000;
+}
+
+.contactpanel {
+	display: none;
+	font-family:'Pompiere',cursive;
+	font-size:18px;
+	color:#cc3333;
+	text-align: left;
+	position: absolute;
+	left: 362px;
+	top: 100px;
+	width: 400px;
+	height: 600px;
+	z-index: 1;
+	background-color: #000000;
+	opacity: 0.9;
+}
+
+.follownav {
+	font-family:'Pompiere',cursive;
+	font-size:25px;
+	text-align: center;
+	color:#cc6666;
+	z-index: 1;
+	background-color: #000000;
+}
+
+.followpanel {
+	display: none;
+	position: absolute;
+	left: 362px;
+	top: 100px;
+	width: 400px;
+	height: 600px;
+	z-index: 1;
+	background-color: #000000;
+	opacity: 0.9;
+}
+
+.fb-like {
+	text-align: left;
+	position: absolute;
+	left: -200px;
+	top: 350px;
+	z-index: 1;
+
+
+</style>
+</HEAD>
+
+
+<BODY style="background-color:#000000">
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+  	var js, fjs = d.getElementsByTagName(s)[0];
+  	if (d.getElementById(id)) return;
+  	js = d.createElement(s); js.id = id;
+  	js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<div id="imgdiv" class="imgdiv">
+	<img src="images/SwingShiftWebMain.png" height="800">
+	</div>
+
+<div class="fb-like" data-href="https://www.swingshiftdc.com/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+	<div class="nav1">
+	<div class="nav1font">SWING</div><div class="nav1font" style="top:-50px;">SHIFT</div>
+	</div>
+
+	<div class="nav2" id="nav2">
+		<div class="nav2font" id="gignav">GIG SCHEDULE</div>
+		<div class="nav2font" id="clipnav">CLIPS</div>
+	</div>
+
+	<div class="gigpanel" id="gigpanel">GIGS</div>
+
+	<div class="nav3">
+		<div class="aboutnav" id="aboutnav"><div class="aboutnav">ABOUT THE BAND</div></div>
+		<div class="contactnav" id="contactnav"><div class="contactnav">CONTACT US</div></div>
+		<div class="follownav" id="follownav">FOLLOW US</div>
+	</div>
+	<div class="clippanel" id="clippanel"><iframe width="560" height="315" src="//www.youtube.com/embed/vOQHASbZ73s" frameborder="0" allowfullscreen></iframe></div>
+	<div class="contactpanel" id="contactpanel">
+	<iframe src="https://www.flickr.com/photos/trimbolim/14702288484/in/pool-swingshifttest/player/" width="400" height="300" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+	</div>
+	<div class="aboutpanel" id="aboutpanel">Founded in 1994, SWING SHIFT was the amalgamation of refugees from several area bands, including the Bob Louis Big Band, the Kingsmen, Bifocals, Central Heat, the Redskins Band, and the Post-Nuclear Jazz Society.  Since its formation, this hard swinging band has been rocking such varied venues the Corcoran Art Gallery, the Kennedy Center, the Washington Hilton, the Fairfax Elks Lodge, and the Sterling Golf and Swim Club. SWING SHIFT also plays regularly at Blues Alley, Washington D.C.'s premiere jazz club.
+ 
+Holding steadfastly to the 18 piece format, SWING SHIFT has survived several economic downturns, hostile political climates, poor weather, and internal power struggles. In 2007, band veteran and guitarist Matt Trimboli was conscripted to provide new musical direction to the band while booking and management was thrust upon vocalist, then band newbie, Barkley Kern.
+ 
+Swing Shift aims to provide as much musical sophistication as an audience can stand while still having an exceptionally good time.
+
+SWING SHIFT and its members contribute time and talent to a variety of philanthropic community endeavors. In addition to various summer concert programs in Fairfax, Montgomery, and Loudoun County, it
+is the chief sponsor of the annual Big Band Extravaganza, formerly at Fairfax High School and recently relocated to Park View High School in Sterling, VA. This program engages students in the middle and high
+school levels in jazz expression, while providing a revenue source for the High School PTSO and Band Programs. It has also participated with other charitable and fraternal organizations such as the Loudoun and
+Fairfax Elks. In 2010, SWING SHIFT was the featured performer for the Haitian Relief Benefit at the Arlington Knights of Columbus.  
+ 
+In 2010 the band refocused on recording and spent four Saturdays in the recording studios of Shenandoah University in Winchester, VA.  The result is "As Long As We're Swingin'" which is due for release in Spring 2011.</div>
+<div id="followpanel" class="followpanel">
+<a class="twitter-timeline" href="https://twitter.com/SwingShiftDC" data-widget-id="491065189773496320">Tweets by @SwingShiftDC</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+
+</BODY>
+</HTML>

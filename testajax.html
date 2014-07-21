@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+<style>
+.div1 {
+        color:#cccc33;
+        font-size:36px;
+        position: relative;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        font-family:'Pompiere',cursive;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="jquery.jsontotable.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.ajax({url:"gigs.json",success:function(result){
+      // (result.toString());
+      // $("#div1").html(result, { id: '#div1', header: false });
+      // $("#div1").html(JSON.stringify(result));
+	//var myobj = JSON.parse(result);
+	var i;
+	var mylist = "";
+//	for (i = 0; i < result.records.length; i++) {
+	for (i = 0; i < 5; i++) {
+		mylist += result.records[i].u_name + "<br>";
+		//alert(i);
+	}
+      	//$("#div1").html(result.records[$i].sys_id);
+      	$("#div1").html(mylist);
+	
+    }});
+  });
+});
+</script>
+</head>
+<body>
+
+<div id="div1" class="div1"><p>Let jQuery AJAX Change This Text</p></div>
+<button>Get External Content</button>
+
+</body>
+</html>
